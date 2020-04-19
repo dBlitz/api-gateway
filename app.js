@@ -6,8 +6,8 @@ var logger = require('morgan');
 var bodyParser = require('body-parser')
 
 // var indexRouter = require('./api/index');
-var user_api = require('./api/user_api');
-var organization_api = require('./api/organization_api');
+var auth_api = require('./api/auth_api');
+// var organization_api = require('./api/organization_api');
 
 var app = express();
 
@@ -28,8 +28,8 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json'}));  
 	
 
-app.use('/api', user_api);
-app.use('/api', organization_api);
+app.use('/auth', auth_api);
+// app.use('/api', organization_api);
 
 
 // catch 404 and forward to error handler
