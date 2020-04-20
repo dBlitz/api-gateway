@@ -23,12 +23,13 @@ async function login(user) {
 
   console.log("yoooooo" + user.email_address + " " + user.password)
 
-  await request.post({url:'http://localhost:1000/api/users/login', form: {email_address: user.email_address, password: user.password}}, function(err,httpResponse,body) { 
+  return new Promise(function (resolve, reject) {
 
-    console.log("body " + body)
-    return body
+   request.post({url:'http://localhost:1000/api/users/login', 
+                form: {email_address: user.email_address, password: user.password}}, function(err,httpResponse,body) { 
+    resolve(body)
   /* ... */ })
-
+});
 
 
   // return await request.post('http://localhost:1000/api/users/login', {form:{email_address: user.email_address, password: user.password}})
