@@ -33,38 +33,26 @@ describe('/POST Login User', () => {
       password: 'abcd1234'})
     .end((err, res) => {
       res.should.have.status(200);
-      console.log("Response:" + res.body)
-
-    //   for(key in res.body) {
-    //     if(res.body.hasOwnProperty(key)) {
-    //         var value = res.body[key];
-    //         console.log(key + ": " + value)
-    //         //do something with value;
-    //     }
-    // }
+      var token = res.body
+      console.log("Response:" + token)
       done();
     });
   });
 });
 
-// // describe('/POST Login User', () => {
-// //   it('it should allow a user to login, and will send back authorization token', (done) => {
-// //     chai.request(app)
-// //     .post('/api/users/login')
-// //     .set("Content-Type", "application/json")
-// //     .send({
-// //       email_address: "satoshi@ysatoshi.com",
-// //       firstName:'Satoshi', 
-// //       lastName: 'Nakamoto',
-// //       password: 'abcd1234'})
-// //     .end((err, res) => {
-// //       res.should.have.status(200);
-// //       console.log(res.body)
-// //       done();
-// //     });
-// //   });
-// // });
-
+describe('/GET All Users', () => {
+  it('it should GET all Users, based on bearer JWT token authorization', (done) => {
+    chai.request(app)
+    .get('/api/users/all')
+    .set('Authorization', 'Bearer ' + token)
+    .set('Accept', 'application/json')
+    .end((err, res) => {
+      res.should.have.status(200);
+      // console.log(res.body)
+      done();
+    });
+  });
+});
 
 //   });
 
@@ -94,19 +82,5 @@ describe('/POST Login User', () => {
 // // https://www.oauth.com/oauth2-servers/token-introspection-endpoint/
 
 
-// describe('/GET All Users', () => {
-//   it('it should GET all Users, based on bearer JWT token authorization', (done) => {
-//     chai.request(app)
-//     .get('/api/users/all')
-//     .set('Authorization', 'Bearer ' + token)
-//     .set('Accept', 'application/json')
-
-//     .end((err, res) => {
-//       res.should.have.status(200);
-//       // console.log(res.body)
-//       done();
-//     });
-//   });
-// });
 
 
