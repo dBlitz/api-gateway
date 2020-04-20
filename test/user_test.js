@@ -33,7 +33,7 @@ describe('/POST Login User', () => {
       password: 'abcd1234'})
     .end((err, res) => {
       res.should.have.status(200);
-      console.log("whatttttt" + res.body)
+      console.log("Response:" + res.body)
 
     //   for(key in res.body) {
     //     if(res.body.hasOwnProperty(key)) {
