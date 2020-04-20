@@ -5,22 +5,28 @@ let chai = require('chai');
 let chaiHttp = require('chai-http');
 let app = require('../app');
 let should = chai.should();
-let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+var auth_token;
 chai.use(chaiHttp);
 
 
-// NEED THIS!!!!!
-//   before(function(done) {
+before(async () => {  
+  it('it should allow a user to login, and will send back authorization token', (done) => {
+    chai.request(app)
+    .post('/api/users/login')
+    .set("Content-Type", "application/json")
+    .send({
+      email_address: "satoshi@ysatoshi.com",
+      password: 'abcd1234'})
+    .end((err, res) => {
+      res.should.have.status(200);
+      auth_token = res.body
+      console.log("Response:" + auth_token)
+      done();
+    });
 
+  });
 
-    
-//     // request(url)
-//     //   .post('/api/users/login')
-//     //   .send({ _id: user1._id, password: user1.password })
-//     //   .end(function(err, res) {
-//     //     token = res.body.token; // Or something
-//     //     done();
-//     //   });
+})
 
 
 describe('/POST Login User', () => {
@@ -34,25 +40,27 @@ describe('/POST Login User', () => {
     .end((err, res) => {
       res.should.have.status(200);
       var token = res.body
-      console.log("Response:" + token)
+      console.log(auth_token)
+      console.log("Response1:" + token)
       done();
     });
+
   });
 });
 
-describe('/GET All Users', () => {
-  it('it should GET all Users, based on bearer JWT token authorization', (done) => {
-    chai.request(app)
-    .get('/api/users/all')
-    .set('Authorization', 'Bearer ' + token)
-    .set('Accept', 'application/json')
-    .end((err, res) => {
-      res.should.have.status(200);
-      // console.log(res.body)
-      done();
-    });
-  });
-});
+// describe('/GET All Users', () => {
+//   it('it should GET all Users, based on bearer JWT token authorization', (done) => {
+//     chai.request(app)
+//     .get('/api/users/all')
+//     .set('Authorization', 'Bearer ' + token)
+//     .set('Accept', 'application/json')
+//     .end((err, res) => {
+//       res.should.have.status(200);
+//       // console.log(res.body)
+//       done();
+//     });
+//   });
+// });
 
 //   });
 
