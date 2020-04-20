@@ -7,26 +7,19 @@ var secret_key = require('../database/config/auth/secret_key').SECRET_KEY.toStri
 
 async function getUsers_All(data) {
 
- console.log("this is token " + data)
-
- // var string = JSON.stringify(token);
  var response_data = JSON.parse(data);
  var token = response_data.token
- // objectValue.forEach(element => console.log(element));
-
- console.log("this is token111 " + token);
 
 
-  // console.log("this is token " + token);
-
-  //   jwt.verify(token, secret_key, function(err, decoded) {
-  //   if ( err ) {
-  //     throw new Error('invalid Authorization');
-  //   }
-  //   else {
-  //     return decoded;
-  //   }
-  // });
+    jwt.verify(token, secret_key, function(err, decoded) {
+    if ( err ) {
+      throw new Error('invalid Authorization');
+    }
+    else {
+      return decoded;
+    }
+  });
+  
   // const allUsers =  await user_service.getUsers_All();
 
 
