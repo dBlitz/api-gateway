@@ -13,7 +13,6 @@ api.post('/create', async function(req, res, next) {return res.json( await user_
 // GET User by ID
 api.get('/:user_id', async function(req, res, next) {return res.json( await user_controller.getUser_ByID(req.params.user_id));});
 
-
   // return res.status(200).send({ auth: true, token: token });
 
 api.post('/login', async function(req, res, next) {return res.json( await user_controller.login(req.body));});
