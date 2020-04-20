@@ -34,6 +34,14 @@ describe('/POST Login User', () => {
     .end((err, res) => {
       res.should.have.status(200);
       console.log("whatttttt" + res.body)
+
+    //   for(key in res.body) {
+    //     if(res.body.hasOwnProperty(key)) {
+    //         var value = res.body[key];
+    //         console.log(key + ": " + value)
+    //         //do something with value;
+    //     }
+    // }
       done();
     });
   });

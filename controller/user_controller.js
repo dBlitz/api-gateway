@@ -21,7 +21,17 @@ async function createUser(theUser) {
 
 async function login(user) {
 
-  return await request.post('http://localhost:1000/api/users/login', {form:{email_address: user.email_address, password: user.password}})
+  console.log("yoooooo" + user.email_address + " " + user.password)
+
+  await request.post({url:'http://localhost:1000/api/users/login', form: {email_address: user.email_address, password: user.password}}, function(err,httpResponse,body) { 
+
+    console.log("body " + body)
+    return body
+  /* ... */ })
+
+
+
+  // return await request.post('http://localhost:1000/api/users/login', {form:{email_address: user.email_address, password: user.password}})
 
 }
 
