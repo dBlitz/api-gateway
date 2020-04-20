@@ -10,6 +10,7 @@ chai.use(chaiHttp);
 
 
 before(async () => {  
+  describe('/POST Login User', () => {
   it('it should allow a user to login, and will send back authorization token', (done) => {
     chai.request(app)
     .post('/api/users/login')
@@ -25,6 +26,7 @@ before(async () => {
     });
 
   });
+});
 
 })
 
@@ -48,21 +50,20 @@ describe('/POST Login User', () => {
   });
 });
 
-// describe('/GET All Users', () => {
-//   it('it should GET all Users, based on bearer JWT token authorization', (done) => {
-//     chai.request(app)
-//     .get('/api/users/all')
-//     .set('Authorization', 'Bearer ' + token)
-//     .set('Accept', 'application/json')
-//     .end((err, res) => {
-//       res.should.have.status(200);
-//       // console.log(res.body)
-//       done();
-//     });
-//   });
-// });
+describe('/GET All Users', () => {
+  it('it should GET all Users, based on bearer JWT token authorization', (done) => {
+    chai.request(app)
+    .get('/api/users/all')
+    .set('Authorization', 'Bearer ' + auth_token)
+    .set('Accept', 'application/json')
+    .end((err, res) => {
+      res.should.have.status(200);
+      // console.log(res.body)
+      done();
+    });
+  });
+});
 
-//   });
 
 // describe('/POST Create User', () => {
 //   it('it should create a User', (done) => {

@@ -4,8 +4,9 @@ const authorize = require('../database/config/authorize.js')
 const request = require('request');
 
 async function getUsers_All() {
-  const allUsers =  await user_service.getUsers_All();
-  return allUsers;
+  // const allUsers =  await user_service.getUsers_All();
+
+  return "aaaaaaaaa";
 }
 
 async function getUser_ByID(user_id) {
