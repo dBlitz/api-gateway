@@ -32,12 +32,12 @@ chai.use(chaiHttp);
     it('it should GET all Users, based on bearer JWT token authorization', (done) => {
       chai.request(app)
       .get('/api/users/all')
-      .set('Authorization', 'Bearer ' + auth_token)
+      .set('Authorization', auth_token)
       .set('Accept', 'application/json')
       .end((err, res) => {
         res.should.have.status(200);
         console.log("auth token " + auth_token)
-      // console.log(res.body)
+      console.log(res.body)
       done();
     });
     });
