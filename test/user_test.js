@@ -33,7 +33,7 @@ describe('/POST Login User', () => {
       password: 'abcd1234'})
     .end((err, res) => {
       res.should.have.status(200);
-      console.log(res.body)
+      console.log("whatttttt" + res.body)
       done();
     });
   });
