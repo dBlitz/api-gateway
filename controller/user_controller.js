@@ -11,17 +11,17 @@ async function getUsers_All(data) {
    var token = JSON.parse(data).token;
 
 
-  return "this is data " + token;
 
-  // jwt.verify(data, secret_key, function(err, decoded) {
-  //   if ( err ) {
-  //     throw new Error('invalid Authorization');
-  //   }
-  //   else {
-  //     return decoded;
-  //   }
+  jwt.verify(token, secret_key, function(err, decoded) {
+    if ( err ) {
+      throw new Error('invalid Authorization');
+    }
+    else {
+      console.log(decoded)
+      return decoded;
+    }
 
-  // });
+  });
 
   // return "yoooooo"
 

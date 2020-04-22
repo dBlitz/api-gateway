@@ -36,7 +36,7 @@ chai.use(chaiHttp);
       .set('Accept', 'application/json')
       .end((err, res) => {
         res.should.have.status(200);
-        console.log("auth token " + auth_token)
+        // console.log("auth token " + auth_token)
       console.log(res.body)
       done();
     });

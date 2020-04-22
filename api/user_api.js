@@ -6,10 +6,7 @@ var user_controller = require('../controller/user_controller');
 var auth_controller = require('../controller/auth_controller');
 
 // GET All Users
-api.get('/all', async function(req, res, next) { 
-
-	console.log(req.header('Authorization'));
-	
+api.get('/all', async function(req, res, next) { 	
  return res.json( await user_controller.getUsers_All(req.header('Authorization')));
 });
 
