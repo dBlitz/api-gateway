@@ -7,20 +7,40 @@ var secret_key = require('../database/config/auth/secret_key').SECRET_KEY.toStri
 
 async function getUsers_All(data) {
 
- var response_data = JSON.parse(data);
- var token = response_data.token
+
+   var token = JSON.parse(data).token;
 
 
-    jwt.verify(token, secret_key, function(err, decoded) {
-    if ( err ) {
-      throw new Error('invalid Authorization');
-    }
-    else {
-      return decoded;
-    }
-  });
-  
-  // const allUsers =  await user_service.getUsers_All();
+  return "this is data " + token;
+
+  // jwt.verify(data, secret_key, function(err, decoded) {
+  //   if ( err ) {
+  //     throw new Error('invalid Authorization');
+  //   }
+  //   else {
+  //     return decoded;
+  //   }
+
+  // });
+
+  // return "yoooooo"
+
+ // var response_data = JSON.parse(data);
+ // var token = response_data.token
+ // jwt.verify(token, secret_key, function(err, decoded) {
+ //  if ( err ) {
+ //    throw new Error('invalid Authorization');
+ //  }
+ //  else {
+ //    return new Promise(function (resolve, reject) {
+ //     request.post({url:'http://localhost:1000/api/users/get', 
+ //      form: {email_address: user.email_address, password: user.password}}, function(err,httpResponse,body) { 
+ //        resolve(body)
+ //      /* ... */ })
+ //   });
+ //  }
+// });
+
 
 
   // return "aaaaaaaaa";
