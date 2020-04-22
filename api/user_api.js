@@ -7,27 +7,32 @@ var auth_controller = require('../controller/auth_controller');
 
 // GET All Users
 api.get('/all', async function(req, res, next) { 	
- return res.json( await user_controller.getUsers_All(req.header('Authorization')));
+	var all_users = await user_controller.getUsers_All(req.header('Authorization'));
+	console.log("all users " + all_users)
+	return res.json( all_users);
 });
 
 //POST Create User
 api.post('/create', async function(req, res, next) {
-	return res.json( await user_controller.createUser(req.body));
+var created_user =  await user_controller.createUser(req.body)
+	return res.json( created_user);
 });
 
 // GET User by ID
 api.get('/:user_id', async function(req, res, next) {
-	return res.json( await user_controller.getUser_ByID(req.params.user_id));
+	var user = await user_controller.getUser_ByID(req.params.user_id);
+	return res.json(user);
 });
 
   // return res.status(200).send({ auth: true, token: token });
 
-api.post('/login', async function(req, res, next) {
-	return res.json( await user_controller.login(req.body));
-});
+  api.post('/login', async function(req, res, next) {
+  	var auth_token = await user_controller.login(req.body)
+  	return res.json(auth_token);
+  });
 
 
-module.exports = api;
+  module.exports = api;
 
 
 

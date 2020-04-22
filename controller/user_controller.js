@@ -6,13 +6,8 @@ var jwt = require('jsonwebtoken');
 var secret_key = require('../database/config/auth/secret_key').SECRET_KEY.toString();
 
 async function getUsers_All(data) {
-
-
-   var token = JSON.parse(data).token;
-
-
-
-  jwt.verify(token, secret_key, function(err, decoded) {
+  var token = JSON.parse(data).token;
+  var decoded_token = await jwt.verify(token, secret_key, function(err, decoded) {
     if ( err ) {
       throw new Error('invalid Authorization');
     }
@@ -20,30 +15,8 @@ async function getUsers_All(data) {
       console.log(decoded)
       return decoded;
     }
-
   });
-
-  // return "yoooooo"
-
- // var response_data = JSON.parse(data);
- // var token = response_data.token
- // jwt.verify(token, secret_key, function(err, decoded) {
- //  if ( err ) {
- //    throw new Error('invalid Authorization');
- //  }
- //  else {
- //    return new Promise(function (resolve, reject) {
- //     request.post({url:'http://localhost:1000/api/users/get', 
- //      form: {email_address: user.email_address, password: user.password}}, function(err,httpResponse,body) { 
- //        resolve(body)
- //      /* ... */ })
- //   });
- //  }
-// });
-
-
-
-  // return "aaaaaaaaa";
+  return decoded_token;
 }
 
 async function getUser_ByID(user_id) {
@@ -59,9 +32,10 @@ async function createUser(theUser) {
 async function login(user) {
   return new Promise(function (resolve, reject) {
    request.post({url:'http://localhost:1000/api/users/login', 
-    form: {email_address: user.email_address, password: user.password}}, function(err,httpResponse,body) { 
-      resolve(body)
-    /* ... */ })
+    form: {email_address: user.email_address, 
+      password: user.password}}, function(err,httpResponse,body) { 
+        resolve(body)
+      /* ... */ })
  });
 }
 
