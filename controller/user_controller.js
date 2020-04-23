@@ -30,7 +30,7 @@ async function getUser_ByID(data) {
     }
   });
 
-      return decoded_token;
+      // return decoded_token;
 
     console.log("decoded???" + decoded_token.user)
       return new Promise(function (resolve, reject) {
@@ -42,7 +42,7 @@ async function getUser_ByID(data) {
         agent: false  // Create a new agent just for this one request
       }, (res) => {
         // console.log(res)
-        resolve(res);
+        resolve("yo" + res);
         // Do stuff with response
       });
 
