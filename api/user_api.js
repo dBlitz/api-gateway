@@ -14,13 +14,15 @@ api.get('/all', async function(req, res, next) {
 
 //POST Create User
 api.post('/create', async function(req, res, next) {
-var created_user =  await user_controller.createUser(req.body)
+	var created_user =  await user_controller.createUser(req.body)
 	return res.json( created_user);
 });
 
 // GET User by ID
-api.get('/:user_id', async function(req, res, next) {
-	var user = await user_controller.getUser_ByID(req.params.user_id);
+api.get('/user/getter', async function(req, res, next) {
+	var user = await user_controller.getUser_ByID(req.header('Authorization'));
+
+	console.log("hahahahahahahaha" + user);
 	return res.json(user);
 });
 

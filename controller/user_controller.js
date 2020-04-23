@@ -4,7 +4,7 @@ const authorize = require('../database/config/authorize.js')
 const request = require('request');
 var jwt = require('jsonwebtoken');
 var secret_key = require('../database/config/auth/secret_key').SECRET_KEY.toString();
-
+var http = require('http');
 async function getUsers_All(data) {
   var token = JSON.parse(data).token;
   var decoded_token = await jwt.verify(token, secret_key, function(err, decoded) {
@@ -19,9 +19,42 @@ async function getUsers_All(data) {
   return decoded_token;
 }
 
-async function getUser_ByID(user_id) {
- var theUser =  await user_service.getUser_ByID(user_id);
- return theUser;
+async function getUser_ByID(data) {
+  return "hellooooo"
+  //   var token = JSON.parse(data).token;
+  //   var decoded_token = await jwt.verify(token, secret_key, function(err, decoded) {
+  //   if ( err ) {
+  //     throw new Error('invalid Authorization');
+  //   }
+  //   else {
+  //     return decoded;
+  //   }
+  // });
+  //   console.log("decoded???" + decoded_token.user)
+  //     return new Promise(function (resolve, reject) {
+
+  //     http.get({
+  //       hostname: 'localhost',
+  //       port: 1000,
+  //       path: '/' + decoded_token.user,
+  //       agent: false  // Create a new agent just for this one request
+  //     }, (res) => {
+  //       // console.log(res)
+  //       resolve(res);
+  //       // Do stuff with response
+  //     });
+
+  //     });
+
+
+
+ //      return new Promise(function (resolve, reject) {
+ //   request.get({url:'http://localhost:1000/api/users/user/' + decoded_token.user.toString(), 
+ //    form: {email_address: user.email_address, 
+ //      password: user.password}}, function(err,httpResponse,body) { 
+ //        resolve(body)
+ //      /* ... */ })
+ // });
 }
 
 async function createUser(theUser) {
