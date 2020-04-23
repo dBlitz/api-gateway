@@ -21,8 +21,6 @@ api.post('/create', async function(req, res, next) {
 // GET User by ID
 api.get('/user/getter', async function(req, res, next) {
 	var user = await user_controller.getUser_ByID(req.header('Authorization'));
-
-	console.log("hahahahahahahaha" + user);
 	return res.json(user);
 });
 

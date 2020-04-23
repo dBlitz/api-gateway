@@ -20,16 +20,18 @@ async function getUsers_All(data) {
 }
 
 async function getUser_ByID(data) {
-  return "hellooooo"
-  //   var token = JSON.parse(data).token;
-  //   var decoded_token = await jwt.verify(token, secret_key, function(err, decoded) {
-  //   if ( err ) {
-  //     throw new Error('invalid Authorization');
-  //   }
-  //   else {
-  //     return decoded;
-  //   }
-  // });
+    var token = JSON.parse(data).token;
+    var decoded_token = await jwt.verify(token, secret_key, function(err, decoded) {
+    if ( err ) {
+      throw new Error('invalid Authorization');
+    }
+    else {
+      return decoded;
+    }
+  });
+
+      return decoded_token;
+
   //   console.log("decoded???" + decoded_token.user)
   //     return new Promise(function (resolve, reject) {
 
