@@ -29,23 +29,35 @@ async function getUser_ByID(data) {
       return decoded;
     }
   });
+  return new Promise(function (resolve, reject) {
+
+    request('http://localhost:1000/api/users/user/' + decoded_token.user, function (error, response, body) {
+    console.error('error:', error); // Print the error if one occurred
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    console.log('body:', JSON.parse(body)); // Print the HTML for the Google homepage.
+    resolve(JSON.parse(body));
+  });
+ // http.get({
+ //          hostname: 'localhost',
+ //          port: 1000,
+ //          path: '/api/users/user/' + decoded_token.user,
+ //        agent: false  // Create a new agent just for this one request
+ //      }, (res) => {
+ //        console.log(res.body)
+ //        resolve(res.body);
+ //        // Do stuff with response
+ //      });
+
+
+  });
 
       // return decoded_token;
 
-      console.log("decoded???" + decoded_token.user)
-      return new Promise(function (resolve, reject) {
-        http.get({
-          hostname: 'localhost',
-          port: 1000,
-          path: '/' + decoded_token.user,
-        agent: false  // Create a new agent just for this one request
-      }, (res) => {
-        console.log(res)
-        resolve("hey");
-        // Do stuff with response
-      });
+      // console.log("decoded???" + decoded_token.user)
+      // return new Promise(function (resolve, reject) {
+      // //  
 
-      });
+      // });
     }
 
  //      return new Promise(function (resolve, reject) {
