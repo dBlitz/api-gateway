@@ -32,21 +32,21 @@ async function getUser_ByID(data) {
 
       return decoded_token;
 
-  //   console.log("decoded???" + decoded_token.user)
-  //     return new Promise(function (resolve, reject) {
+    console.log("decoded???" + decoded_token.user)
+      return new Promise(function (resolve, reject) {
 
-  //     http.get({
-  //       hostname: 'localhost',
-  //       port: 1000,
-  //       path: '/' + decoded_token.user,
-  //       agent: false  // Create a new agent just for this one request
-  //     }, (res) => {
-  //       // console.log(res)
-  //       resolve(res);
-  //       // Do stuff with response
-  //     });
+      http.get({
+        hostname: 'localhost',
+        port: 1000,
+        path: '/' + decoded_token.user,
+        agent: false  // Create a new agent just for this one request
+      }, (res) => {
+        // console.log(res)
+        resolve(res);
+        // Do stuff with response
+      });
 
-  //     });
+      });
 
 
 
