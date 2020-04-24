@@ -13,7 +13,7 @@ api.get('/all', async function(req, res, next) {
 });
 
 //POST Create User
-api.post('/create', async function(req, res, next) {
+api.post('/user/create', async function(req, res, next) {
 	var created_user =  await user_controller.createUser(req.body)
 	return res.json( created_user);
 });
@@ -26,7 +26,7 @@ api.get('/user/getter', async function(req, res, next) {
 
   // return res.status(200).send({ auth: true, token: token });
 
-  api.post('/login', async function(req, res, next) {
+  api.post('/user/login', async function(req, res, next) {
   	var auth_token = await user_controller.login(req.body)
   	return res.json(auth_token);
   });

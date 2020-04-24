@@ -10,17 +10,16 @@ chai.use(chaiHttp);
 
 describe('/POST Login User', () => {
   it('it should allow a user to login, and will send back authorization token', (done) => {
-
     chai.request(app)
-    .post('/api/users/login')
+    .post('/api/users/user/login')
     .set("Content-Type", "application/json")
     .send({
       email_address: "satoshi@ysatoshi.com",
-      password: 'abcd1234'})
+        password: 'abcd1234'})
     .end((err, res) => {
       res.should.have.status(200);
+      console.log(res.body)
       auth_token = res.body
-      console.log("Response:" + auth_token)
       done();
     });
   });
@@ -34,7 +33,7 @@ describe('/GET All Users', () => {
     .set('Accept', 'application/json')
     .end((err, res) => {
       res.should.have.status(200);
-      console.log(res.body.user)
+      // console.log(res.body.user)
       done();
     });
   });
@@ -54,7 +53,23 @@ describe('/GET User By ID', () => {
   });
 });
 
-  // test cases
+// describe('/POST Create User', () => {
+//   it('it should allow a user to login, and will send back authorization token', (done) => {
+
+//     chai.request(app)
+//     .post('/api/users/user/create')
+//     .set("Content-Type", "application/json")
+//     .send({
+//       email_address: "satoshi@ysatoshi.com",
+//       password: 'abcd1234'})
+//     .end((err, res) => {
+//       res.should.have.status(200);
+//       auth_token = res.body
+//       console.log("Response:" + auth_token)
+//       done();
+//     });
+//   });
+// });
 
 
 
