@@ -8,7 +8,6 @@ var auth_controller = require('../controller/auth_controller');
 // GET All Users
 api.get('/all', async function(req, res, next) { 	
 	var all_users = await user_controller.getUsers_All(req.header('Authorization'));
-	console.log("all users " + all_users)
 	return res.json( all_users);
 });
 

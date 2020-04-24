@@ -13,7 +13,6 @@ async function getUsers_All(data) {
       throw new Error('invalid Authorization');
     }
     else {
-      console.log(decoded)
       return decoded;
     }
   });
