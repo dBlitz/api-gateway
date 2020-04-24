@@ -4,11 +4,14 @@ var bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var user_controller = require('../controller/user_controller');
 var auth_controller = require('../controller/auth_controller');
+var authorize = require('../helpers/authorize');
 
 // GET All Users
-api.get('/all', async function(req, res, next) { 	
-	var all_users = await user_controller.getUsers_All(req.header('Authorization'));
-	return res.json( all_users);
+api.get('/all', async function(req, res, next) { 
+
+	var authorized_user = await authorize.authorize(req.header('Authorization'))
+	var all_users = await user_controller.getUsers_All(authorized_user);
+	return res.json(all_users);
 });
 
 //POST Create User

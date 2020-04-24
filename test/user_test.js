@@ -33,7 +33,7 @@ describe('/GET All Users', () => {
     .set('Accept', 'application/json')
     .end((err, res) => {
       res.should.have.status(200);
-      // console.log(res.body.user)
+      console.log(res.body)
       done();
     });
   });
