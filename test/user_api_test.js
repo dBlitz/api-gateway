@@ -15,11 +15,11 @@ describe('/POST Create User', () => {
     .post('/api/users/user/create')
     .set("Content-Type", "application/json")
     .send({
-      email_address: "satoshi@ysatoshi.com",
-      firstName:'Satoshi', 
-      lastName: 'Nakamoto',
+      email_address: "friend@friend.com",
+      firstName:'Friend', 
+      lastName: 'Friend',
       password: 'abcd1234',
-      roles: ["Employee"]
+      roles: ["Employee", "Admin"]
     })
     .end((err, res) => {
       res.should.have.status(200);
