@@ -23,7 +23,7 @@ describe('/POST Create User', () => {
     })
     .end((err, res) => {
       res.should.have.status(200);
-      console.log("Response:" + res.body)
+      // console.log("Response:" + res.body)
       done();
     });
   });
@@ -39,7 +39,7 @@ describe('/POST Login User', () => {
         password: 'abcd1234'})
     .end((err, res) => {
       res.should.have.status(200);
-      // console.log(res.body)
+      console.log(res.body)
       auth_token = res.body
       done();
     });
