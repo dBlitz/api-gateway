@@ -5,6 +5,30 @@ const request = require('request');
 var jwt = require('jsonwebtoken');
 var secret_key = require('../database/config/auth/secret_key').SECRET_KEY.toString();
 var http = require('http');
+
+async function createUser(theUser) {
+
+  return new Promise(function (resolve, reject) {
+   request.post({url:'http://localhost:1000/api/users/user/create', 
+    form: {email_address: theUser.email_address, 
+      password: theUser.password,
+      firstName: theUser.firstName,
+      lastName: theUser.lastName,
+      roles: theUser.roles
+    }
+    }, function(err,httpResponse,body) { 
+        resolve(body)
+      /* ... */ })
+ });
+
+
+ // const created_user =  await user_service.createUser(theUser);
+ // return created_user;
+// return "yoooooo"
+
+
+}
+
 async function getUsers_All(data) {
 
   roles = data.roles;
@@ -48,27 +72,6 @@ async function getUser_ByID(data) {
 
 
   });
-}
-
-
-
-async function createUser(theUser) {
-
-  // return new Promise(function (resolve, reject) {
-
-  //   request('http://localhost:1000/api/users/user/create' + decoded_token.user, function (error, response, body) {
-  //   // console.error('error:', error); // Print the error if one occurred
-  //   // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-  //   // console.log('body:', JSON.parse(body)); // Print the HTML for the Google homepage.
-  //   resolve(JSON.parse(body));
-  // });
-
-
- // const created_user =  await user_service.createUser(theUser);
- // return created_user;
-return "yoooooo"
-
-
 }
 
 async function login(user) {
