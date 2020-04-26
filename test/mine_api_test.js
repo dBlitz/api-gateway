@@ -72,6 +72,24 @@ describe('/GET Mines By User ID', () => {
   });
 });
 
+describe('/POST Update Mine', () => {
+  it('it should Update a Mine', (done) => {
+    chai.request(app)
+    .post('/api/mine/update')
+    .set("Content-Type", "application/json")
+    .set('Authorization', auth_token)
+    .send({
+      id: 5,
+      mine_name: "Updated Mine Name"
+    })
+    .end((err, res) => {
+      res.should.have.status(200);
+      console.log(res.body)
+      done();
+    });
+  });
+});
+
 
 // //GET AUTHORIZER ACCESS TOKEN 
 

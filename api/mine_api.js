@@ -35,13 +35,15 @@ api.get('/getter/user', async function(req, res, next) {
 // 	return res.json(mines);
 // });
 
-// // POST UPDATE MINE
-// api.post('/update', async function(req, res, next) {
-// 	var updated_mine_response = await mine_controller.updateMine(req.body);
-// 	return res.json({
-// 		  updated_mine_response
-// 		});
-// });
+// POST UPDATE MINE
+api.post('/update', async function(req, res, next) {
+	var authorized_user = await authorize.authorize(req.header('Authorization'))
+
+	var updated_mine_response = await mine_controller.updateMine(authorized_user, req.body);
+	return res.json({
+		  updated_mine_response
+		});
+});
 
 // api.post('/user/add', async function(req, res, next) {
 // 	var updated_mine_response = await mine_controller.addUsertoMine(req.body);
