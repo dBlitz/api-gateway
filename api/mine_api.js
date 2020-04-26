@@ -15,7 +15,11 @@ api.get('/all', async function(req, res, next) {
 });
 
 //POST Create Mine
-api.post('/create', async function(req, res, next) {return res.json( await mine_controller.createMine(req.body));});
+api.post('/create', async function(req, res, next) {
+
+
+	var authorized_user = await authorize.authorize(req.header('Authorization'))
+	return res.json( await mine_controller.createMine(authorized_user, req.body));});
 
 // // GET Mines by User ID
 // api.get('/user/:user_id', async function(req, res, next) {

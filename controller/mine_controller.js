@@ -6,10 +6,10 @@ var jwt = require('jsonwebtoken');
 var secret_key = require('../database/config/auth/secret_key').SECRET_KEY.toString();
 var http = require('http');
 
-async function createMine(theUser) {
+async function createMine(authorized_user, the_mine) {
   return new Promise(function (resolve, reject) {
    request.post({url:'http://localhost:1100/api/mine/create', 
-    form: {mine_name: theUser.mine_name
+    form: {mine_name: the_mine.mine_name
     }
     }, function(err,httpResponse,body) { 
         resolve(body)

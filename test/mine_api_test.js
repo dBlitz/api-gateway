@@ -46,6 +46,7 @@ describe('/POST Create Mine', () => {
     chai.request(app)
     .post('/api/mine/create')
     .set("Content-Type", "application/json")
+    .set('Authorization', auth_token)
     .send({
       mine_name: "New Name for Mine"})
     .end((err, res) => {
