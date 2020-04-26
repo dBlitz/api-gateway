@@ -34,7 +34,7 @@ describe('/GET All Mines', () => {
     .set('Accept', 'application/json')
     .end((err, res) => {
       res.should.have.status(200);
-      console.log(res.body)
+      // console.log(res.body)
       done();
     });
   });
@@ -58,6 +58,19 @@ describe('/POST Create Mine', () => {
   });
 });
 
+describe('/GET Mines By User ID', () => {
+  it('it should GET all Mines by User ID', (done) => {
+    chai.request(app)
+    .get('/api/mine/getter/user')
+    .set('Authorization', auth_token)
+    .set('Accept', 'application/json')
+    .end((err, res) => {
+      res.should.have.status(200);
+      console.log(res.body)
+      done();
+    });
+  });
+});
 
 
 // //GET AUTHORIZER ACCESS TOKEN 

@@ -34,6 +34,14 @@ async function getMines_All(data) {
   });
 }
 
+async function getMines_ByUserID(authorized_user) {
+  return new Promise(function (resolve, reject) {
+    request('http://localhost:1100/api/mine/user/' + authorized_user.user, function (error, response, body) {
+        resolve(JSON.parse(body));
+      });
+  });
+}
+
 
 // async function getUser_ByID(data) {
 //   var token = JSON.parse(data).token;
@@ -60,5 +68,6 @@ async function getMines_All(data) {
 
 module.exports = {
   getMines_All,
-  createMine
+  createMine,
+  getMines_ByUserID
 };

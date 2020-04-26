@@ -18,13 +18,17 @@ api.get('/all', async function(req, res, next) {
 api.post('/create', async function(req, res, next) {
 
 	var authorized_user = await authorize.authorize(req.header('Authorization'))
-	return res.json( await mine_controller.createMine(authorized_user, req.body));});
+	return res.json( await mine_controller.createMine(authorized_user, req.body));
 
-// // GET Mines by User ID
-// api.get('/user/:user_id', async function(req, res, next) {
-// 	var mines = await mine_controller.getMines_ByUserID(req.params.user_id);
-// 	return res.json(mines);
-// });
+});
+
+// GET Mines by User ID
+api.get('/getter/user', async function(req, res, next) {
+
+	var authorized_user = await authorize.authorize(req.header('Authorization'))
+	var mines = await mine_controller.getMines_ByUserID(authorized_user);
+	return res.json(mines);
+});
 
 // api.get('/:mine_id', async function(req, res, next) {
 //  	var mines = await mine_controller.getMine_ByMineID(req.params.mine_id);
