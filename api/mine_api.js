@@ -8,26 +8,27 @@ var authorize = require('../helpers/authorize');
 
 // GET All Users
 api.get('/all', async function(req, res, next) { 
+
 	var authorized_user = await authorize.authorize(req.header('Authorization'))
 	var all_users = await user_controller.getUsers_All(authorized_user);
 	return res.json(all_users);
 });
 
 //POST Create User
-api.post('/create', async function(req, res, next) {
+api.post('/user/create', async function(req, res, next) {
 	var created_user =  await user_controller.createUser(req.body)
 	return res.json( created_user);
 });
 
 // GET User by ID
-api.get('/getter', async function(req, res, next) {
+api.get('/user/getter', async function(req, res, next) {
 	var user = await user_controller.getUser_ByID(req.header('Authorization'));
 	return res.json(user);
 });
 
   // return res.status(200).send({ auth: true, token: token });
 
-  api.post('/login', async function(req, res, next) {
+  api.post('/user/login', async function(req, res, next) {
   	var auth_token = await user_controller.login(req.body)
   	return res.json(auth_token);
   });

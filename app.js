@@ -8,6 +8,7 @@ var bodyParser = require('body-parser')
 // var indexRouter = require('./api/index');
 var user_api = require('./api/user_api');
 var auth_api = require('./api/auth_api');
+var mine_api = require('./api/mine_api');
 
 // var organization_api = require('./api/organization_api');
 
@@ -27,7 +28,8 @@ app.use(bodyParser.json({ type: 'application/json'}));
 	
 
 app.use('/auth', auth_api);
-app.use('/api/users', user_api);
+app.use('/api/user', user_api);
+app.use('/api/mines', mine_api);
 
 
 // catch 404 and forward to error handler

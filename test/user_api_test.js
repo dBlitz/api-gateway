@@ -12,7 +12,7 @@ describe('/POST Create User', () => {
   it('it should allow a user to login, and will send back authorization token', (done) => {
 
     chai.request(app)
-    .post('/api/users/user/create')
+    .post('/api/user/create')
     .set("Content-Type", "application/json")
     .send({
       email_address: "friend@friend.com",
@@ -32,7 +32,7 @@ describe('/POST Create User', () => {
 describe('/POST Login User', () => {
   it('it should allow a user to login, and will send back authorization token', (done) => {
     chai.request(app)
-    .post('/api/users/user/login')
+    .post('/api/user/login')
     .set("Content-Type", "application/json")
     .send({
       email_address: "satoshi@ysatoshi.com",
@@ -49,12 +49,12 @@ describe('/POST Login User', () => {
 describe('/GET All Users', () => {
   it('it should GET all Users, based on bearer JWT token authorization', (done) => {
     chai.request(app)
-    .get('/api/users/all')
+    .get('/api/user/all')
     .set('Authorization', auth_token)
     .set('Accept', 'application/json')
     .end((err, res) => {
       res.should.have.status(200);
-      // console.log(res.body)
+      console.log(res.body)
       done();
     });
   });
@@ -63,7 +63,7 @@ describe('/GET All Users', () => {
 describe('/GET User By ID', () => {
   it('it should GET user by ID, based on bearer JWT token authorization', (done) => {
     chai.request(app)
-    .get('/api/users/user/getter')
+    .get('/api/user/getter')
     .set('Authorization', auth_token)
     .set('Accept', 'application/json')
     .end((err, res) => {
