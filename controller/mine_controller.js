@@ -7,10 +7,14 @@ var secret_key = require('../database/config/auth/secret_key').SECRET_KEY.toStri
 var http = require('http');
 
 async function createMine(authorized_user, the_mine) {
+
+  console.log(authorized_user)
+  var user_fks = [authorized_user.user]
+  console.log(authorized_user.user)
   return new Promise(function (resolve, reject) {
    request.post({url:'http://localhost:1100/api/mine/create', 
-    form: {mine_name: the_mine.mine_name
-    }
+    form: {mine_name: the_mine.mine_name, fk_user_ids: JSON.stringify([authorized_user.user])
+    }, json:true
     }, function(err,httpResponse,body) { 
         resolve(body)
       /* ... */ })

@@ -17,7 +17,6 @@ api.get('/all', async function(req, res, next) {
 //POST Create Mine
 api.post('/create', async function(req, res, next) {
 
-
 	var authorized_user = await authorize.authorize(req.header('Authorization'))
 	return res.json( await mine_controller.createMine(authorized_user, req.body));});
 

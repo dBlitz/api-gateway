@@ -48,7 +48,8 @@ describe('/POST Create Mine', () => {
     .set("Content-Type", "application/json")
     .set('Authorization', auth_token)
     .send({
-      mine_name: "New Name for Mine"})
+      mine_name: "New Name for Mine"
+    })
     .end((err, res) => {
       res.should.have.status(200);
       console.log(res.body)
