@@ -29,7 +29,7 @@ app.use(bodyParser.json({ type: 'application/json'}));
 
 app.use('/auth', auth_api);
 app.use('/api/user', user_api);
-app.use('/api/mines', mine_api);
+app.use('/api/mine', mine_api);
 
 
 // catch 404 and forward to error handler
