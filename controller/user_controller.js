@@ -32,8 +32,6 @@ async function createUser(theUser) {
 async function getUsers_All(data) {
 
   roles = data.roles;
-  console.log("roles!")
-  console.log(roles)
 
   if (roles.length && !roles.includes("Employee")) {
     //                 // user's role is not authorized

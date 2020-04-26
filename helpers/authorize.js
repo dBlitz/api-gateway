@@ -9,7 +9,6 @@ var http = require('http');
 async function authorize(the_token) {
 
 	var token = JSON.parse(the_token).token;
-	console.log("this is token: " + token)
 	var decoded_token = await jwt.verify(token, secret_key, function(err, decoded) {
 		if ( err ) {
 			throw new Error('invalid Authorization');
