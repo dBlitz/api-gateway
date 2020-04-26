@@ -49,7 +49,7 @@ describe('/POST Login User', () => {
 describe('/GET All Mines', () => {
   it('it should GET all Mines', (done) => {
     chai.request(app)
-    .get('/api/user/all')
+    .get('/api/mine/all')
     .set('Authorization', auth_token)
     .set('Accept', 'application/json')
     .end((err, res) => {

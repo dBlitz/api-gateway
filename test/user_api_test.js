@@ -54,7 +54,7 @@ describe('/GET All Users', () => {
     .set('Accept', 'application/json')
     .end((err, res) => {
       res.should.have.status(200);
-      console.log(res.body)
+      // console.log(res.body)
       done();
     });
   });
