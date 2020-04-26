@@ -60,21 +60,6 @@ describe('/GET All Mines', () => {
   });
 });
 
-describe('/GET User By ID', () => {
-  it('it should GET user by ID, based on bearer JWT token authorization', (done) => {
-    chai.request(app)
-    .get('/api/user/getter')
-    .set('Authorization', auth_token)
-    .set('Accept', 'application/json')
-    .end((err, res) => {
-      res.should.have.status(200);
-      // console.log(res.body)
-      done();
-    });
-  });
-});
-
-
 
 
 
