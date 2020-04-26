@@ -23,7 +23,7 @@ api.post('/create', async function(req, res, next) {
 });
 
 // GET Mines by User ID
-api.get('/getter/user', async function(req, res, next) {
+api.get('/user/getter', async function(req, res, next) {
 
 	var authorized_user = await authorize.authorize(req.header('Authorization'))
 	var mines = await mine_controller.getMines_ByUserID(authorized_user);
@@ -45,12 +45,13 @@ api.post('/update', async function(req, res, next) {
 		});
 });
 
-// api.post('/user/add', async function(req, res, next) {
-// 	var updated_mine_response = await mine_controller.addUsertoMine(req.body);
-// 	return res.json({
-// 		  updated_mine_response
-// 		});
-// });
+api.post('/user/add', async function(req, res, next) {
+	var authorized_user = await authorize.authorize(req.header('Authorization'))
+	var updated_mine_response = await mine_controller.addUsertoMine(authorized_user, req.body);
+	return res.json({
+		  updated_mine_response
+		});
+});
 
 
   // return res.status(200).send({ auth: true, token: token });

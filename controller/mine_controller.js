@@ -49,9 +49,20 @@ async function updateMine(authorized_user, the_mine) {
  });
 }
 
+async function addUsertoMine(authorized_user, the_mine) {
+  return new Promise(function (resolve, reject) {
+   request.post({url:'http://localhost:1100/api/mine/user/add', 
+    form: { id: the_mine.id, fk_user_ids: JSON.stringify(the_mine.fk_user_ids) }, json:true
+    }, function(err,httpResponse,body) { 
+        resolve(body)
+      /* ... */ })
+ });
+}
+
 module.exports = {
   getMines_All,
   createMine,
   getMines_ByUserID,
-  updateMine
+  updateMine,
+  addUsertoMine
 };

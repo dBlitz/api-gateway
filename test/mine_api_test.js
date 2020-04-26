@@ -61,7 +61,7 @@ describe('/POST Create Mine', () => {
 describe('/GET Mines By User ID', () => {
   it('it should GET all Mines by User ID', (done) => {
     chai.request(app)
-    .get('/api/mine/getter/user')
+    .get('/api/mine/user/getter')
     .set('Authorization', auth_token)
     .set('Accept', 'application/json')
     .end((err, res) => {
@@ -81,6 +81,24 @@ describe('/POST Update Mine', () => {
     .send({
       id: 5,
       mine_name: "Updated Mine Name"
+    })
+    .end((err, res) => {
+      res.should.have.status(200);
+      console.log(res.body)
+      done();
+    });
+  });
+});
+
+describe('/POST Add Users to Mine', () => {
+  it('it should Add Users to Mine', (done) => {
+    chai.request(app)
+    .post('/api/mine/user/add')
+    .set("Content-Type", "application/json")
+    .set('Authorization', auth_token)
+    .send({
+      id: 5,
+      fk_user_ids: [1, 3, 5]
     })
     .end((err, res) => {
       res.should.have.status(200);
