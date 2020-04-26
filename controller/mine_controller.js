@@ -6,20 +6,16 @@ var jwt = require('jsonwebtoken');
 var secret_key = require('../database/config/auth/secret_key').SECRET_KEY.toString();
 var http = require('http');
 
-// async function createUser(theUser) {
-//   return new Promise(function (resolve, reject) {
-//    request.post({url:'http://localhost:1000/api/user/create', 
-//     form: {email_address: theUser.email_address, 
-//       password: theUser.password,
-//       firstName: theUser.firstName,
-//       lastName: theUser.lastName,
-//       roles: theUser.roles
-//     }
-//     }, function(err,httpResponse,body) { 
-//         resolve(body)
-//       /* ... */ })
-//  });
-// }
+async function createMine(theUser) {
+  return new Promise(function (resolve, reject) {
+   request.post({url:'http://localhost:1100/api/mine/create', 
+    form: {mine_name: theUser.mine_name
+    }
+    }, function(err,httpResponse,body) { 
+        resolve(body)
+      /* ... */ })
+ });
+}
 
 async function getMines_All(data) {
   roles = data.roles;
@@ -33,6 +29,7 @@ async function getMines_All(data) {
       });
   });
 }
+
 
 // async function getUser_ByID(data) {
 //   var token = JSON.parse(data).token;
@@ -58,5 +55,6 @@ async function getMines_All(data) {
 // }
 
 module.exports = {
-  getMines_All
+  getMines_All,
+  createMine
 };

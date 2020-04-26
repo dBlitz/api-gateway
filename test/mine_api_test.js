@@ -8,26 +8,6 @@ let should = chai.should();
 var auth_token;
 chai.use(chaiHttp);
 
-// describe('/POST Create User', () => {
-//   it('it should allow a user to login, and will send back authorization token', (done) => {
-
-//     chai.request(app)
-//     .post('/api/user/create')
-//     .set("Content-Type", "application/json")
-//     .send({
-//       email_address: "friend@friend.com",
-//       firstName:'Friend', 
-//       lastName: 'Friend',
-//       password: 'abcd1234',
-//       roles: ["Employee", "Admin"]
-//     })
-//     .end((err, res) => {
-//       res.should.have.status(200);
-//       // console.log("Response:" + res.body)
-//       done();
-//     });
-//   });
-// });
 
 describe('/POST Login User', () => {
   it('it should allow a user to login, and will send back authorization token', (done) => {
@@ -61,26 +41,20 @@ describe('/GET All Mines', () => {
 });
 
 
-
-
-
-// describe('/POST Create User', () => {
-//   it('it should create a User', (done) => {
-//     chai.request(app)
-//     .post('/api/users/create')
-//     .set("Content-Type", "application/json")
-//     .send({
-//       email_address: "satoshi@ysatoshi.com",
-//       firstName:'Satoshi', 
-//       lastName: 'Nakamoto',
-//       password: 'abcd1234'})
-//     .end((err, res) => {
-//       res.should.have.status(200);
-//       console.log(res.body)
-//       done();
-//     });
-//   });
-// });
+describe('/POST Create Mine', () => {
+  it('it should create a Mine', (done) => {
+    chai.request(app)
+    .post('/api/mine/create')
+    .set("Content-Type", "application/json")
+    .send({
+      mine_name: "New Name for Mine"})
+    .end((err, res) => {
+      res.should.have.status(200);
+      console.log(res.body)
+      done();
+    });
+  });
+});
 
 
 

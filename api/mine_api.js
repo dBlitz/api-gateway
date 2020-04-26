@@ -14,6 +14,36 @@ api.get('/all', async function(req, res, next) {
 	return res.json(all_mines);
 });
 
+//POST Create Mine
+api.post('/create', async function(req, res, next) {return res.json( await mine_controller.createMine(req.body));});
+
+// // GET Mines by User ID
+// api.get('/user/:user_id', async function(req, res, next) {
+// 	var mines = await mine_controller.getMines_ByUserID(req.params.user_id);
+// 	return res.json(mines);
+// });
+
+// api.get('/:mine_id', async function(req, res, next) {
+//  	var mines = await mine_controller.getMine_ByMineID(req.params.mine_id);
+// 	return res.json(mines);
+// });
+
+// // POST UPDATE MINE
+// api.post('/update', async function(req, res, next) {
+// 	var updated_mine_response = await mine_controller.updateMine(req.body);
+// 	return res.json({
+// 		  updated_mine_response
+// 		});
+// });
+
+// api.post('/user/add', async function(req, res, next) {
+// 	var updated_mine_response = await mine_controller.addUsertoMine(req.body);
+// 	return res.json({
+// 		  updated_mine_response
+// 		});
+// });
+
+
   // return res.status(200).send({ auth: true, token: token });
 
 
